@@ -9,13 +9,12 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 WORKDIR /app
 
-# Bring in a current Node/npm runtime required by mcporter.
 COPY --from=node_runtime /usr/local/ /usr/local/
 
-# Server-safe Agent Reach dependencies.
+# Core server-safe Agent Reach dependencies.
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-       ca-certificates curl git gh ffmpeg \
+       ca-certificates curl git gh \
     && rm -rf /var/lib/apt/lists/*
 
 # Exa semantic search backend.
